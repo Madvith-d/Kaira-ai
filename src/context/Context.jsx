@@ -11,7 +11,7 @@ const ContextProvider = (props) => {
     const [showResult, setShowResult] = useState(false)
     const [loading, setLoading] = useState(false)
     const [resultData, setResultData] = useState("")
-
+    const [chatHistory, setChatHistory] = useState([]);
 
     function delayPara(index, nextWord) {
         setTimeout(function () {
@@ -20,38 +20,32 @@ const ContextProvider = (props) => {
     }
 
     const onSent = async (prompt) => {
-
-        setResultData("")
-        setLoading(true)
-        setShowResult(true)
+        setLoading(true);
+        setShowResult(true);
         let response;
-        if (prompt !== undefined) {
-            response = await runChat(prompt);
-            setRecentPrompt(prompt)
-        }
-        else {
-            setPrevPrompts(prev => [...prev, input]);
-            setRecentPrompt(input)
-            response = await runChat(input);
-        }
-        let responseArray = response.split('**');
-        let newArray = "";
-        for (let i = 0; i < responseArray.length; i++) {
-            if (i === 0 || i % 2 !== 1) {
-                newArray += responseArray[i]
-            }
-            else {
-                newArray += "<b>" + responseArray[i] + "</b>"
-            }
-        }
-        console.log(newArray);
-        responseArray = newArray.split('*').join("</br>").split(" ");
-        for (let i = 0; i < responseArray.length; i++) {
-            const nextWord = responseArray[i];
-            delayPara(i, nextWord + " ")
-        }
+        let newPrompt = prompt !== undefined ? prompt : input;
+
+        setPrevPrompts(prev => [...prev, newPrompt]);
+        setRecentPrompt(newPrompt);
+        response = await runChat(newPrompt);
+
+        let formattedResponse = formatResponse(response);
+
+        setChatHistory(prev => [...prev, 
+            { type: 'user', content: newPrompt },
+            { type: 'bot', content: formattedResponse }
+        ]);
+
         setLoading(false);
-        setInput("")
+        setInput("");
+    }
+
+    const formatResponse = (response) => {
+        let responseArray = response.split('**');
+        let newArray = responseArray.map((item, index) => 
+            index % 2 === 1 ? `<b>${item}</b>` : item
+        ).join('');
+        return newArray.split('*').join("<br/>");
     }
 
     const newChat = async () => {
@@ -70,7 +64,9 @@ const ContextProvider = (props) => {
         resultData,
         input,
         setInput,
-        newChat
+        newChat,
+        chatHistory,
+        setChatHistory
     }
 
     return (
