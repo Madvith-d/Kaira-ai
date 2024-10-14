@@ -23,7 +23,7 @@
 .greet {
     margin: 50px 0px;
     font-size: 56px;
-    color: #c4c7c5;
+    color: #6e6c6c;
     font-weight: 500;
     padding: 20px;
 }
@@ -167,4 +167,37 @@
     .search-box div{
         gap: 5px;
     }
+}
+
+.chat-item {
+    margin-bottom: 20px;
+}
+
+.chat-item-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.chat-item-title img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.chat-item-content {
+    margin-left: 40px;
+}
+
+.user .chat-item-content {
+    background-color: #f0f4f9;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.bot .chat-item-content {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
 }
