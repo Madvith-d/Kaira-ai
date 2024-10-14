@@ -26,7 +26,7 @@ const Main = () => {
                             <div key={index} className={`chat-item ${item.type}`}>
                                 <div className='chat-item-title'>
                                     <img src={item.type === 'user' ? assets.user_icon : assets.gemini_icon} alt="" />
-                                    <p>{item.type === 'user' ? 'You' : 'Gemini'}</p>
+                                    {item.type === 'user' && <p>You</p>}
                                 </div>
                                 <div className="chat-item-content">
                                     {item.type === 'user' ? (
