@@ -48,7 +48,7 @@ const Main = () => {
                 ) : (
                     <>
                         <div className="greet">
-                            <p><span>Hello, Dev.</span></p>
+                            <p><span>Hello There!.</span></p>
                             <p>How can I help you today?</p>
                         </div>
                         <div className="cards">
@@ -87,7 +87,7 @@ const Main = () => {
                         </div>
                     </div>
                     <p className="bottom-info">
-                        Gemini may display inaccurate info, including about people, so double-check its responses. Your privacy and Gemini Apps
+                        Made by team INNOV8ORS nmamit 
                     </p>
                 </div>
             </div>
