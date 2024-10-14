@@ -53,20 +53,20 @@ const Main = () => {
                         </div>
                         <div className="cards">
                             <div className="card">
-                                <p>Suggest beautiful places to see on an upcoming road trip</p>
-                                <img src={assets.compass_icon} alt="" />
-                            </div>
-                            <div className="card">
-                                <p>Briefly summarize this concept: urban planning</p>
+                                <p> I’m so overwhelmed with work. There’s too much on my plate.</p>
                                 <img src={assets.bulb_icon} alt="" />
                             </div>
                             <div className="card">
-                                <p>Brainstorm team bonding activities for our work retreat</p>
-                                <img src={assets.message_icon} alt="" />
+                                <p>  : I just don’t feel motivated to do anything.</p>
+                                <img src={assets.bulb_icon} alt="" />
                             </div>
                             <div className="card">
-                                <p>Improve the readability of the following code</p>
-                                <img src={assets.code_icon} alt="" />
+                                <p> I’m stressed about my upcoming exams. </p>
+                                <img src={assets.bulb_icon} alt="" />
+                            </div>
+                            <div className="card">
+                                <p>  don’t feel good enough compared to others.</p>
+                                <img src={assets.bulb_icon} alt="" />
                             </div>
                         </div>
                     </>
