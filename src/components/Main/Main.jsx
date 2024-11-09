@@ -13,6 +13,19 @@ const Main = () => {
         chatHistory
     } = useContext(Context);
 
+    // Example prompts array for better maintainability
+    const examplePrompts = [
+        "I'm so overwhelmed with work. There's too much on my plate.",
+        "I just don't feel motivated to do anything.",
+        "I'm stressed about my upcoming exams.",
+        "don't feel good enough compared to others."
+    ];
+
+    // Handler for when an example prompt is clicked
+    const handleExampleClick = (prompt) => {
+        setInput(prompt);
+    };
+
     return (
         <div className='main'>
             <div className="nav">
@@ -52,22 +65,17 @@ const Main = () => {
                             <p>How can I help you today?</p>
                         </div>
                         <div className="cards">
-                            <div className="card">
-                                <p> I’m so overwhelmed with work. There’s too much on my plate.</p>
-                                <img src={assets.bulb_icon} alt="" />
-                            </div>
-                            <div className="card">
-                                <p>  : I just don’t feel motivated to do anything.</p>
-                                <img src={assets.bulb_icon} alt="" />
-                            </div>
-                            <div className="card">
-                                <p> I’m stressed about my upcoming exams. </p>
-                                <img src={assets.bulb_icon} alt="" />
-                            </div>
-                            <div className="card">
-                                <p>  don’t feel good enough compared to others.</p>
-                                <img src={assets.bulb_icon} alt="" />
-                            </div>
+                            {examplePrompts.map((prompt, index) => (
+                                <div 
+                                    key={index} 
+                                    className="card"
+                                    onClick={() => handleExampleClick(prompt)}
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    <p>{prompt}</p>
+                                    <img src={assets.bulb_icon} alt="" />
+                                </div>
+                            ))}
                         </div>
                     </>
                 )}
@@ -81,7 +89,6 @@ const Main = () => {
                             placeholder='Enter a prompt here' 
                         />
                         <div>
-                            
                             {input && <img onClick={() => onSent()} src={assets.send_icon} width={30} alt="" />}
                         </div>
                     </div>
