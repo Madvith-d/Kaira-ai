@@ -108,9 +108,6 @@ Contributions to improve Kaira AI are welcome. Please follow these steps:
 4. Push to the branch: `git push origin feature-branch-name`
 5. Submit a pull request
 
-## License
-
-[Add your chosen license here]
 
 ## Acknowledgments
 
