@@ -89,6 +89,7 @@
 }
 .search-box div {
     display: flex;
+    align-items: center;
     gap: 15px;
 }
 
@@ -186,7 +187,7 @@
 }
 
 .chat-item-content {
-    margin-left: 40px;
+    position: relative;
 }
 
 .user .chat-item-content {
@@ -200,4 +201,10 @@
     padding: 10px;
     border-radius: 10px;
     border: 1px solid #e0e0e0;
+}
+
+.text-to-speech {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
 }
