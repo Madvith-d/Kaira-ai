@@ -4,11 +4,12 @@
 }
 
 .speak-icon {
-    width: 24px;
-    height: 24px;
+    width: 17px;
+    height: 20px;
     cursor: pointer;
     opacity: 0.7;
     transition: all 0.3s ease;
+    padding: 2px;
 }
 
 .speak-icon:hover {
