@@ -1,16 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { assets } from '../../assets/assets';
 import './TextToSpeech.css';
 
 const TextToSpeech = ({ text }) => {
     const [isSpeaking, setIsSpeaking] = useState(false);
+    const [voices, setVoices] = useState([]);
+
+    useEffect(() => {
+        const loadVoices = () => {
+            setVoices(window.speechSynthesis.getVoices());
+        };
+
+        loadVoices();
+        if (window.speechSynthesis.onvoiceschanged !== undefined) {
+            window.speechSynthesis.onvoiceschanged = loadVoices;
+        }
+    }, []);
 
     const speak = () => {
         if ('speechSynthesis' in window) {
-            // Stop any ongoing speech
             window.speechSynthesis.cancel();
 
             const utterance = new SpeechSynthesisUtterance(text);
+            
+            const femaleVoice = voices.find(voice => 
+                voice.name.includes('female') || 
+                voice.name.includes('Female') || 
+                voice.name.includes('woman') ||
+                voice.name.includes('Girl')
+            );
+
+            if (femaleVoice) {
+                utterance.voice = femaleVoice;
+            }
+
+            utterance.pitch = 1.0;
+            utterance.rate = 1.0;
+
             utterance.onstart = () => setIsSpeaking(true);
             utterance.onend = () => setIsSpeaking(false);
             utterance.onerror = () => {
@@ -32,7 +58,7 @@ const TextToSpeech = ({ text }) => {
     return (
         <div className="text-to-speech">
             <img
-                src={assets.speaker_icon} // You'll need to add this icon to your assets
+                src={assets.speaker_icon}
                 alt={isSpeaking ? "Stop speaking" : "Speak text"}
                 className={`speak-icon ${isSpeaking ? 'speaking' : ''}`}
                 onClick={isSpeaking ? stopSpeaking : speak}
