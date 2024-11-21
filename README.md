@@ -1,4 +1,4 @@
-# Kaira AI - Mental Wellbeing Chatbot
+# Kaira AI - Mental Wellbeing  Chatbot
 
 ## Project Overview
 
