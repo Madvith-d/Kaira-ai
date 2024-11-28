@@ -6,8 +6,12 @@ import {
   
   const MODEL_NAME = "gemini-1.5-flash";
   
-  // Paste Your API KEY Below
-  const API_KEY = "AIzaSyBWFeczJpHqQL86PeUhSIWczmsbJDwyObs";
+  // Get API key from environment variable
+  const API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
+  
+  if (!API_KEY) {
+    throw new Error('GEMINI_API_KEY environment variable is not set');
+  }
   
   async function runChat(prompt) {
     const genAI = new GoogleGenerativeAI(API_KEY);
